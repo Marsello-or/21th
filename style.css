@@ -1,0 +1,87 @@
+/* CSS for heart shape */
+body {
+    margin-top: 130px;
+    background-color: rgb(255, 212, 247);
+}
+
+#clickCount {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 75px;
+}
+
+.above-text {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.heart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    margin: 50px auto;
+    cursor: pointer;
+    transform: rotate(-45deg);
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -50px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 50px;
+}
+
+.heart-text {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1) rotate(-45deg);
+    }
+    50% {
+        transform: scale(2) rotate(-45deg);
+    }
+    100% {
+        transform: scale(1) rotate(-45deg);
+    }
+}
+
+.heart:active,
+.heart.beat {
+    animation: heartbeat 0.2s ease-out;
+    animation-fill-mode: forwards;
+}
+
+/* Additional CSS for text above enlarged heart */
+.above-text-enlarged {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: -50px; /* Adjust as needed to position the text */
+    color: rgb(0, 0, 0); /* Adjust color as needed */
+    z-index: 6;
+}
+

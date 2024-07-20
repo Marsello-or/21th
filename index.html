@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Our 21</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="above-text">Try to Click me</div>
+    <div id="clickCount">Click Count: 0</div>
+    <div class="heart" id="heart"></div>
+    <div class="heart-text" id="heartText"></div>
+
+    <script>
+        const heart = document.getElementById('heart');
+        const heartText = document.getElementById('heartText');
+        const clickCountDisplay = document.getElementById('clickCount'); // Reference to the click count display element
+
+        const texts = [
+            "Happy Monthsiveee!!",
+            "Always love you>_<",
+            "You're the best and i grateful to have you!!",
+            "Keep being the same spirit and soul that make me proud * :** kiss*",
+            "Nobody told me being in love could go this deep",
+            "Being with you makes me learn a lot of thing, one of it is how beautiful the world is",
+            "Sorry for sometimes do the same mistake",
+            "Thankyou for being with me all this time, despite how hard sometimes it get",
+            "Life is a struggle but you make it easier and comfier",
+            "All that it takes, is one of that sweet smiles of yours and all will be fine",
+            "Love is all around us, but for me it was concentrated on you <3",
+            "Stinky",
+            "So much to do yet so little time, glad i could share it with you :3",
+            "We have so much to explore, so bare with me until we gray and old @_@",
+            "Despite the space between us when we're away, love is boundless",
+            "Bandung is cold, but it's colder without you",
+            "Having lunch/breakfast/dinner never feel this good, if it's not because of you",
+            "Your motivate me enough to change how i look :p",
+            "For our relationship and beyond!!",
+            "XOXO, your loverboy"
+        ];
+
+        let currentIndex = 0;
+        let clickCount = 0;
+
+        heart.addEventListener('click', function () {
+            clickCount++;
+            clickCountDisplay.textContent = `Click Count: ${clickCount}`; // Update the click count display
+
+            if (clickCount <= 20) {
+                heartText.textContent = texts[currentIndex];
+                currentIndex = (currentIndex + 1) % texts.length;
+                heartText.style.display = 'block';
+
+                // Toggle the 'beat' class to trigger the animation
+                heart.classList.toggle('beat');
+
+                // Remove the 'beat' class after the animation completes
+                setTimeout(function () {
+                    heart.classList.remove('beat');
+                }, 200); // 0.2s should match the duration of the heartbeat animation
+            } else if (clickCount === 21) {
+                // On the 21st click, enlarge the heart
+                heart.style.transform = 'scale(3.5) rotate(-45deg)';
+
+                // Create a new element for the text above the heart
+                const aboveText = document.createElement('div');
+                aboveText.textContent = "Enlarged Heart!";
+                aboveText.classList.add('above-text-enlarged');
+                heart.parentElement.appendChild(aboveText);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
